@@ -1,4 +1,8 @@
 <script setup>
+
+const a = 10
+
+a = 5
 </script>
 
 <template>
