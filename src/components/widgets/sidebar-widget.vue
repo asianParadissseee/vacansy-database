@@ -1,5 +1,7 @@
 <script setup></script>
 
 <template>
-  <div></div>
+  <aside></aside>
 </template>
+
+<style scoped></style>
