@@ -1,36 +1,16 @@
 <script setup>
-const navbarLinks = [
-  {
-    name: 'Вакансии',
-    path: '/',
-  },
-  {
-    name: 'Резюме',
-    path: '/',
-  },
-  {
-    name: 'Цены и услуги',
-    path: '/',
-  },
-]
+import BurgerMenu from '@/components/burger-menu.vue'
+import { useSidebarStore } from '@/stores/sidebar.js'
+import { navbarLinks, navbarModals } from '@/const/links.js'
 
-const navbarModals = [
-  {
-    name: 'Резюме',
-  },
-  {
-    name: 'Вакансия',
-  },
-  {
-    name: 'Войти',
-  },
-]
+const { actions: sidebarActions } = useSidebarStore()
 </script>
 
 <template>
   <header class="bg-white h-20 flex items-center">
     <div class="container mx-auto px-5 flex justify-between items-center text-customBlack">
-      <nav>
+      <BurgerMenu class="block md:hidden" @click="sidebarActions.handleOpenSidebar()" />
+      <nav class="hidden md:block">
         <ul class="flex gap-7 items-center">
           <li v-for="(link, id) in navbarLinks" :key="'navbarLinks' + id">
             <router-link :to="link.path">{{ link.name }}</router-link>
@@ -38,13 +18,27 @@ const navbarModals = [
         </ul>
       </nav>
       <div>Homester.pro</div>
-      <nav>
+      <nav class="hidden md:block">
         <ul class="flex gap-7 items-center">
-          <li v-for="(modal, id) in navbarModals" :key="'navbarModals' + id">
+          <li
+            v-for="(modal, id) in navbarModals"
+            :key="'navbarModals' + id"
+            :class="{
+              'bg-[#F8F8F8] !text-[#133F42] py-1 px-2 rounded': modal.name === 'Войти',
+            }"
+            class="text-[#FF4A96] font-light font-rubik flex gap-1.5"
+          >
+            <div
+              v-if="modal.name !== 'Войти'"
+              class="rounded-full border-2 w-6 h-6 flex justify-center items-center text-lg font-semibold"
+            >
+              +
+            </div>
             {{ modal.name }}
           </li>
         </ul>
       </nav>
+      <i class="pi pi-user !text-xl !block md:!hidden"></i>
     </div>
   </header>
 </template>
