@@ -24,12 +24,13 @@ export const navbarModals = [
     name: 'Войти',
   },
 ]
-export const policyLinkss = [
+
+export const policyLinks = [
   {
     name: 'Пользовательское соглашение',
   },
   {
-    name: 'Политика конфидециальности',
+    name: ' Политика конфидецальности',
   },
   {
     name: 'Контактная информация',
