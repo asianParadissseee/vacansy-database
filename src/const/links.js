@@ -1,11 +1,11 @@
 export const navbarLinks = [
   {
     name: 'Вакансии',
-    path: '/',
+    path: '/vacansies',
   },
   {
     name: 'Резюме',
-    path: '/',
+    path: '/resumes',
   },
   {
     name: 'Цены и услуги',

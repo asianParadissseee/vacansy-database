@@ -1,8 +1,8 @@
 <template>
   <aside
-    class="bg-gray-100 z-50 fixed h-0 left-0 right-0 opactiy-0 transition-all px-4 py-8 duration-700 overflow-x-hidden invisible"
+    class="bg-gray-100 z-50 fixed h-0 left-0 right-0 opacity-0 transition-all px-4 py-8 duration-700 overflow-x-hidden invisible"
     :class="{
-      'opactiy-100 visible h-svh': isOpenSidebar,
+      'opacity-100 visible h-svh': isOpenSidebar,
     }"
   >
     <nav class="flex justify-between">
@@ -43,8 +43,8 @@
 </template>
 
 <script setup>
-import { navbarLinks, navbarModals, policyLinks } from '@/const/links'
-import { useSidebarStore } from '@/stores/sidebar'
+import { navbarLinks, navbarModals, policyLinks } from '@/const/links.js'
+import { useSidebarStore } from '@/stores/sidebar.js'
 import { storeToRefs } from 'pinia'
 import { watch } from 'vue'
 

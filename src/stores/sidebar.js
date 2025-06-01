@@ -4,14 +4,14 @@ import { ref } from 'vue'
 export const useSidebarStore = defineStore('sidebar', () => {
   const isOpenSidebar = ref(false)
 
-  const handleopenSidebar = () => {
+  const handleOpenSidebar = () => {
     isOpenSidebar.value = !isOpenSidebar.value
   }
 
   return {
     isOpenSidebar,
     actions: {
-      handleopenSidebar,
+      handleOpenSidebar,
     },
   }
 })
