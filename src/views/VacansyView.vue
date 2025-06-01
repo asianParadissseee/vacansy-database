@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto px-5">
     <JobFilter />
-    <SearchVacansies :is-filter-btn="true" class="mt-10" />
+    <SearchVacansies @search-resumes="searchVacancies" v-model:search-value="searchValue" :is-filter-btn="true" class="mt-10" />
     <section class="min-h-52">
       <div v-if="isLoading" class="flex justify-center items-center my-4">
         <ProgressSpinner />
@@ -15,7 +15,7 @@
       </div>
       <Message v-if="errorMessage" class="mt-10" severity="error">{{ errorMessage }}</Message>
     </section>
-    <DepartmentSection />
+    <DepartmentSection class="mt-20" />
   </div>
 </template>
 
@@ -31,7 +31,7 @@ import { http } from '@/api/http.js'
 const isLoading = ref(false)
 const vacancies = ref([])
 const errorMessage = ref('')
-
+const searchValue = ref('')
 async function fetchVacancies() {
   isLoading.value = true
   try {
@@ -45,6 +45,21 @@ async function fetchVacancies() {
     isLoading.value = false
   }
 }
+async function searchVacancies() {
+  isLoading.value = true
+  try {
+    const res = await http.get('/vacancies?title=*' + searchValue.value)
+    vacancies.value = res.data
+    isLoading.value = false
+  } catch (error) {
+    console.error(error)
+    errorMessage.value = 'Damn bro, произошла ошибка. Попробуйте позже'
+  } finally {
+    isLoading.value = false
+  }
+}
+
+
 
 onMounted(() => {
   fetchVacancies()
