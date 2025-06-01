@@ -12,6 +12,8 @@
   --color-middleGrey: #C2CDCE;
 }
 
+
+
 body {
   @apply bg-lightGrey;
 }
