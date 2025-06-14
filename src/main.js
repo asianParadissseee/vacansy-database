@@ -7,6 +7,7 @@ import App from './App.vue'
 import router from './router/index.js'
 import PrimeVue from 'primevue/config'
 import Aura from '@primeuix/themes/aura'
+import { ToastService, Toast } from 'primevue'
 
 const app = createApp(App)
 
@@ -17,5 +18,7 @@ app.use(PrimeVue, {
     preset: Aura,
   },
 })
-
+app.use(ToastService)
+// eslint-disable-next-line vue/multi-word-component-names
+app.component('Toast', Toast)
 app.mount('#app')

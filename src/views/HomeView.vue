@@ -10,7 +10,7 @@ const categories = ref([])
 
 async function fetchCategory() {
   try {
-    const response = await http.get('/category')
+    const response = await http.get('/categories')
     categories.value = response.data
   } catch (e) {
     console.log(e)
